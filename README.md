@@ -18,5 +18,10 @@ sh bin/zookeeper-server-start.sh config/zookeeper.properties
 sh bin/kafka-server-start.sh config/server.properties
 ~~~
 
+* Or avoid above two steps and start both Zookeeper and Kafka Server in one command
+~~~
+docker compose up
+~~~
+
 * Launch the spring boot application
 * Use the endpoints and call them in any og the API testing tools like Postman, Insomnia, Bruno etc.

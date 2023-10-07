@@ -13,7 +13,7 @@ public class KafkaMessagePublisher {
     private KafkaTemplate<String, Object> kafkaTemplate;
 
     public void sendMessageToKafkaTopic(String message) {
-        CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send("quickstart", message);
+        CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send("quickstart-3", message);
 
         future.whenComplete((result, ex) -> {
 
