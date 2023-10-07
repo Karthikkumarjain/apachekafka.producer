@@ -1,6 +1,6 @@
 # Creation of Kafka Publisher/Producer using Spring Boot
 
-# Prerequisites
+# Prerequisites(Avoid below if using docker compose)
 
 * Install Kafka from official page -https://kafka.apache.org/downloads
 * Instal Confluent Kafka from official page -https://www.confluent.io/installation/

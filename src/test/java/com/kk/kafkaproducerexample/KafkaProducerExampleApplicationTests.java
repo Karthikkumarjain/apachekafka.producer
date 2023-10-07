@@ -37,7 +37,7 @@ class KafkaProducerExampleApplicationTests {
         publisher.sendEventMessageToKafkaTopic(new EmployeeDetails(123,"Karthik","Kumar","TW"));
         await().pollInterval(Duration.ofSeconds(3))
                 .atMost(10, TimeUnit.SECONDS).untilAsserted(() -> {
-                    // assert statement
+                    // assert against database or some other external API or anything(Based on business needs)
                 });
     }
 
