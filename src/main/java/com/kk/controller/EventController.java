@@ -1,12 +1,11 @@
 package com.kk.controller;
 
+import com.kk.dto.EmployeeDetails;
 import com.kk.service.KafkaMessagePublisher;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.CustomAutowireConfigurer;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/producer-event")
@@ -29,5 +28,14 @@ public class EventController {
 
         }
         return ResponseEntity.ok("Message published successfully");
+    }
+
+    @PostMapping("/publishEventMessage")
+    public void publishEventMessage(@RequestBody EmployeeDetails employeeDetails) {
+
+
+            kafkaMessagePublisher.sendEventMessageToKafkaTopic(employeeDetails);
+
+
     }
 }

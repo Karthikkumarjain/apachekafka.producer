@@ -1,5 +1,6 @@
 package com.kk.service;
 
+import com.kk.dto.EmployeeDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
@@ -42,4 +43,23 @@ public class KafkaMessagePublisher {
         });
     }
 
+    public void sendEventMessageToKafkaTopic(EmployeeDetails emp) {
+        try {
+            CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send("quickstart-4", emp);
+
+            future.whenComplete((result, ex) -> {
+
+                if (ex != null) {
+                    System.out.println("Unable to send message=["
+                            + emp.toString() + "] due to : " + ex.getMessage());
+                } else {
+                    System.out.println("Sent message=[" + emp.toString() +
+                            "] with offset=[" + result.getRecordMetadata().offset() + "]" + "partition=[" + result.getRecordMetadata().partition() + "]");
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 }
