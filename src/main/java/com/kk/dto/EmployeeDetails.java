@@ -1,8 +1,12 @@
 package com.kk.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class EmployeeDetails {
 
         private int id;
