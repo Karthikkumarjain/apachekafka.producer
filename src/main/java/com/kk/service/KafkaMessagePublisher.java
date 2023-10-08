@@ -28,6 +28,21 @@ public class KafkaMessagePublisher {
         });
     }
 
+    public void sendMessageToSpecificPartitionInTopic(String message) {
+        CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send("quickstart-3",2,null, message);
+
+        future.whenComplete((result, ex) -> {
+
+            if (ex != null) {
+                System.out.println("Unable to send message=["
+                        + message + "] due to : " + ex.getMessage());
+            } else {
+                System.out.println("Sent message=[" + message +
+                        "] with offset=[" + result.getRecordMetadata().offset() + "]" + "partition=[" + result.getRecordMetadata().partition() + "]");
+            }
+        });
+    }
+
     public void sendMessageToKafkaTopicInBulk(String message) {
         CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send("quickstart-3", message);
 
