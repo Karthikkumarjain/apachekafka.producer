@@ -10,4 +10,8 @@ public class KafkaProducerExampleApplication {
         SpringApplication.run(KafkaProducerExampleApplication.class, args);
     }
 
+
+
 }
+
+

@@ -28,6 +28,8 @@ public class KafkaMessagePublisher {
         });
     }
 
+
+
     public void sendMessageToSpecificPartitionInTopic(String message) {
         CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send("quickstart-3",2,null, message);
 
@@ -44,7 +46,7 @@ public class KafkaMessagePublisher {
     }
 
     public void sendMessageToKafkaTopicInBulk(String message) {
-        CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send("quickstart-3", message);
+        CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send("quickstart-4", message);
 
         future.whenComplete((result, ex) -> {
 

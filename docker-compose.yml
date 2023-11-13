@@ -4,6 +4,8 @@ services:
   zookeeper:
     image: wurstmeister/zookeeper
     container_name: zookeeper
+    networks:
+      - your-network-name
     ports:
       - "2181:2181"
 
@@ -12,6 +14,12 @@ services:
     container_name: kafka
     ports:
       - "9092:9092"
+    networks:
+      - your-network-name
     environment:
       KAFKA_ADVERTISED_HOST_NAME: localhost
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+
+networks:
+  your-network-name:
+    driver: bridge

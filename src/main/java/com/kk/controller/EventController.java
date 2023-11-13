@@ -3,7 +3,6 @@ package com.kk.controller;
 import com.kk.dto.EmployeeDetails;
 import com.kk.service.KafkaMessagePublisher;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.CustomAutowireConfigurer;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +22,7 @@ public class EventController {
     @GetMapping("/publishbulk/{message}")
     public ResponseEntity<?> publishMessageInBulk(@PathVariable String message) {
 
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 1000; i++) {
             kafkaMessagePublisher.sendMessageToKafkaTopicInBulk(message + " " + i);
 
         }
